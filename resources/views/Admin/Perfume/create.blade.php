@@ -71,7 +71,7 @@
     </div>
     
     <div class="mb-3gender">
-        <label for="exampleFormControlInput1" class="form-label">Description</label>
+        <label for="exampleFormControlInput1" class="form-label">Description The Perfume</label>
         <textarea name="description" class="form-control  @error('description') is-invalid @enderror" id="description" cols="20" rows="5" placeholder="Description Of Perfume" >{{ old('description', $perfume->description ?? '') }}</textarea>
     </div>
     <br>
