@@ -7,9 +7,11 @@
         <div class="row align-items-center">
             <div class="col">
                 <a class="btn btn-primary" href="{{route('sperto.create')}}" role="button">Create</a>
+                <a class="btn btn-danger" href="{{route('sperto.trash')}}" role="button">Trash</a>
+
 
                 <br>
-
+<br>
             </div>
         </div>
         @if ($message = Session::get('success'))

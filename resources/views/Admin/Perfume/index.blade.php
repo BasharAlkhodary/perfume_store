@@ -9,7 +9,8 @@
 
                 @auth
                 <a class="btn btn-primary" href="{{route('perfume.create')}}" role="button">Create</a>
-                <a class="btn btn-danger" href="{{ route('perfume.trash') }}" role="button">Trash</a>
+                <a class="btn btn-primary" href="{{route('perfume.trash')}}" role="button">Trash</a>
+
                 @endauth 
                 <br>
             </div>
@@ -60,7 +61,7 @@
                                 <button type="submit" class="btn btn-danger">Delete</button>
 
                                 <a href="{{route('perfume.edit',$item->id)}}" class="btn btn-info">Edit</a>
-                                <a href="{{route('soft.delete',$item->id)}}" class="btn btn-outline-warning">softDelete </a>
+                                <a href="{{route('soft.delete',$item->id)}}" class="btn btn-warning">softDelete </a>
                             @endauth
                     
                             <a href="{{route('perfume.show',$item->id)}}" class="btn btn-success">Show</a>

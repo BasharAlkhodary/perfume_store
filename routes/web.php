@@ -69,7 +69,7 @@ Route::get('customer/soft/delete/{id}', [CustomerController::class,'softDelete']
 // ->name(soft.delete);
 
 Route::get('perfume/trash', [PerfumeController::class, 'trashedPerfume'])->name('perfume.trash');
-Route::get('sperto/trash',[SpertoController::class,'trash'])->name('sperto.trash');
+Route::get('sperto/tr',[SpertoController::class,'trashedSperto'])->name('sperto.trash');
 Route::get('order/trash',[OrderController::class,'trash'])->name('order.trash');
 Route::get('glass/trash',[GlassController::class,'trash'])->name('glass.trash');
 Route::get('customer/trash',[CustomerController::class,'trash'])->name('customer.trash');
@@ -95,5 +95,10 @@ Route::put('prof',[user_profile_controller::class,'update']);
 
 
 
-
+Route::get('lang/{locale}', function ($locale) {
+    if (in_array($locale, ['en', 'ar'])) {
+        session()->put('locale', $locale);
+    }
+    return redirect()->back();
+})->name('lang.switch');
 

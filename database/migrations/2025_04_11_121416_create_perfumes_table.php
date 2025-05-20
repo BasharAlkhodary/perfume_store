@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('picture')->nullable(); // مسار الصورة
             $table->text('description')->nullable();
-            $table->enum('gender', ['male', 'female','unisex']);
+            $table->enum('gender', ['male', 'female', 'unisex']);
             $table->integer('size'); // بالحجم ml، مثل 100 أو 50
             // $table->foreignId('company_factor_id')->constrained()->onDelete('cascade');
             // $table->string('concentration_type');

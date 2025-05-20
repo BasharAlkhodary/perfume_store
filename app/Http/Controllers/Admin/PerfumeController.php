@@ -26,7 +26,13 @@ public function __construct()
     public function index()
     {
         $perfume = Perfume::latest()->paginate(8);
-        return view('Admin.Perfume.index', compact('perfume'));
+        return view('Admin.Perfume.trash', compact('perfume'));
+    }
+
+    public function trashedPerfume ()
+    {
+        $perfume = Perfume::onlyTrashed()->latest()->paginate(8);
+        return view('Admin.Perfume.trash', compact('perfume'));
     }
 
     /**
@@ -142,8 +148,8 @@ public function __construct()
      */
     public function destroy(Perfume  $perfume)
     {
-    $perfume->delete();
-    return redirect()->route('perfume.index')->with('delete', 'Perfume deleted Successfully');
+        $perfume->delete();
+        return redirect()->route('perfume.index')->with('delete', 'Perfume deleted Successfully');
     }
     
     /**
@@ -158,11 +164,11 @@ public function __construct()
         return redirect()->route('perfume.index')->with('delete', 'Perfume was deleted Successfully');
     }
 
-    public function trashedPerfume()
-    {
-        $perfume = Perfume::onlyTrashed()->latest()->paginate(8);
-        return view('Admin.perfume.index', compact('perfume'));
-    }
+    // public function trashedPerfume()
+    // {
+    //     $perfume = Perfume::onlyTrashed()->latest()->paginate(8);
+    //     return view('Admin.perfume.index', compact('perfume'));
+    // }
 
     public function restore($id)
     {

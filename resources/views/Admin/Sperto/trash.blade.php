@@ -6,7 +6,11 @@
     <div class="container text-center p-5">
         <div class="row align-items-center">
             <div class="col">
-                <a class="btn btn-primary" href="{{route('sperto.create')}}" role="button">Create</a>
+                <a class="btn btn-primary" href="{{route('sperto.index')}}" role="button">HOME</a>
+                <a class="btn btn-primary" href="{{route('sperto.trash')}}" role="button">Trashed</a>
+
+                <br>
+
             </div>
         </div>
         @if ($message = Session::get('success'))
@@ -54,6 +58,8 @@
                             <button type="submit" class="btn btn-danger">Delete</button>
 
                             <a href="{{route('sperto.edit',$item->id)}}" class="btn btn-info">Edit</a>
+                            <a href="{{route('sperto.soft.delete',$item->id)}}" class="btn btn-outline-warning">SoftDelete</a>
+
                             <a href="{{route('sperto.show',$item->id)}}" class="btn btn-success">Show</a>
                             </form> 
                         </td>

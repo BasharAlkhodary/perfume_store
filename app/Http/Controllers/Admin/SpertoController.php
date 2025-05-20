@@ -20,6 +20,13 @@ class SpertoController extends Controller
         return view('Admin.sperto.index', compact('sperto'));
     }
 
+    public function trashedSperto()
+    {
+        // $sperto = Sperto::withTrashed()->latest()->paginate(8);
+        // return view('Admin.sperto.trash', compact('sperto'));
+    echo "fffffffff";
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -131,10 +138,10 @@ class SpertoController extends Controller
         return redirect()->route('sperto.index')->with('delete', 'Sperto was deleted Successfully');
     }
 
-    public function trash()
-    {
-        $sperto = Sperto::withTrashed()->latest();
-    }
+    // public function trash()
+    // {
+    //     $sperto = Sperto::withTrashed()->latest();
+    // }
 
     public function restore($id)
     {

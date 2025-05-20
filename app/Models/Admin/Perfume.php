@@ -24,7 +24,11 @@ class Perfume extends Model
     
     public function companyFactor() {
         return $this->belongsTo(Company::class);
-
-        
     }
+
+
+    // لوضع قيم افتراضية للمتغيرات..يتم تكوينه هنا بدلا من تكوينه في ملف قاعدة البيانات حتى اذا اردت تغيير القيمة لا تحتاج الى تغير كل بيانات قاعدة البيانات
+    protected $attritbutes =[
+        'gender' => 'unisex',
+    ];
 }
