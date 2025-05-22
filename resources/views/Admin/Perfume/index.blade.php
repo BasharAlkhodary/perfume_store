@@ -8,10 +8,11 @@
             <div class="col">
 
                 @auth
-                <a class="btn btn-primary" href="{{route('perfume.create')}}" role="button">Create</a>
-                <a class="btn btn-primary" href="{{route('perfume.trash')}}" role="button">Trash</a>
+                <a class="btn btn-primary" href="{{route('perfume.create')}}" role="button">{{__('Create')}}</a>
+                <a class="btn btn-danger" href="{{route('perfume.trash')}}" role="button">{{__('Trash')}}</a>
 
                 @endauth 
+                <br>
                 <br>
             </div>
         </div>
@@ -30,14 +31,14 @@
             <thead>
                     <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Picture</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Size</th>
-                    <th scope="col">Gender</th>
+                    <th scope="col">{{__('Name')}}</th>
+                    <th scope="col">{{__('Picture')}}</th>
+                    <th scope="col">{{__('Description')}}</th>
+                    <th scope="col">{{__('Size')}}</th>
+                    <th scope="col">{{__('Gender')}}</th>
                     {{-- <th scope="col">concentration_type</th> --}}
-                    <th scope="col">Price</th>
-                    <th scope="col">Actions</th>
+                    <th scope="col">{{__('Price')}}</th>
+                    <th scope="col">{{__('Actions')}}</th>
                     </tr>
             </thead>    
                 <tbody class="table-group-divider">
@@ -58,13 +59,13 @@
                                 <form action="{{route('perfume.destroy',$item->id)}}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete</button>
+                                <button type="submit" class="btn btn-danger">{{__('Delete')}}</button>
 
-                                <a href="{{route('perfume.edit',$item->id)}}" class="btn btn-info">Edit</a>
-                                <a href="{{route('soft.delete',$item->id)}}" class="btn btn-warning">softDelete </a>
+                                <a href="{{route('perfume.edit',$item->id)}}" class="btn btn-info">{{__('Edit')}}</a>
+                                <a href="{{route('soft.delete',$item->id)}}" class="btn btn-warning">{{__('SoftDelete')}} </a>
                             @endauth
                     
-                            <a href="{{route('perfume.show',$item->id)}}" class="btn btn-success">Show</a>
+                            <a href="{{route('perfume.show',$item->id)}}" class="btn btn-success">{{__('Show')}}</a>
                             </form> 
                         </td>
                     </tr>

@@ -5,13 +5,11 @@
 <div class="container">
     <div class="container text-center p-5">
         <div class="row align-items-center">
+
             <div class="col">
-                <a class="btn btn-primary" href="{{route('sperto.create')}}" role="button">Create</a>
-                <a class="btn btn-danger" href="{{route('sperto.trash')}}" role="button">Trash</a>
-
-
-                <br>
-<br>
+                <a class="btn btn-primary" href="{{route('sperto.create')}}" role="button">{{__('Create')}}</a>
+                <a class="btn btn-danger" href="{{route('sperto.trash')}}" role="button">{{__('Trash')}}</a>
+            <br>
             </div>
         </div>
         @if ($message = Session::get('success'))
@@ -32,12 +30,12 @@
             <thead>
                     <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Picture</th>
-                    <th scope="col">Concentration</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Size</th>
-                    <th scope="col">Actions</th>
+                    <th scope="col">{{__('Name')}}</th>
+                    <th scope="col">{{__('Picture')}}</th>
+                    <th scope="col">{{__('Concentration')}}</th>
+                    <th scope="col">{{__('Price')}}</th>
+                    <th scope="col">{{__('Size')}}</th>
+                    <th scope="col">{{__('Actions')}}</th>
                     </tr>
             </thead>    
                 <tbody class="table-group-divider">
@@ -56,12 +54,12 @@
                             <form action="{{route('sperto.destroy',$item->id)}}" method="POST">
                             @csrf
                             {{-- @method('DELETE') --}}
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <button type="submit" class="btn btn-danger">{{__('Delete')}}</button>
 
-                            <a href="{{route('sperto.edit',$item->id)}}" class="btn btn-info">Edit</a>
-                            <a href="{{route('sperto.soft.delete',$item->id)}}" class="btn btn-outline-warning">SoftDelete</a>
+                            <a href="{{route('sperto.edit',$item->id)}}" class="btn btn-info">{{__('Edit')}}</a>
+                            <a href="{{route('sperto.soft.delete',$item->id)}}" class="btn btn-outline-warning">{{__('SoftDelete')}}</a>
 
-                            <a href="{{route('sperto.show',$item->id)}}" class="btn btn-success">Show</a>
+                            <a href="{{route('sperto.show',$item->id)}}" class="btn btn-success">{{__('Show')}}</a>
                             </form> 
                         </td>
                     </tr>

@@ -26,6 +26,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
-        // App::setLocale('ar');
+
+
+        // $lang = request('lang' , config('app.locale'));
+        // App::setLocale($lang);
     }
 }

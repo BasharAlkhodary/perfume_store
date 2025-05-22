@@ -1,10 +1,14 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{ App::currentLocale() }}" dir="{{ App::currentLocale() == 'ar' ? 'rtl' : 'ltr' }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Perfume | BIK.Perfume</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    @if (App::currentLocale() == 'ar')
+        <link href={{ asset('css/bootstrap.rtl.min.css') }} rel="stylesheet" >
+    @else
+        <link href={{ asset('css/bootstrap.min.css') }} rel="stylesheet" >
+    @endif
 </head>
 
 <body>
@@ -15,17 +19,17 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <!-- شعار أو اسم الموقع -->
-        <a class="navbar-brand" href="{{ route('dashboard') }}">BIK PERFUME</a>
+        <a class="navbar-brand" href="{{ route('dashboard') }}">{{ __('BIK PERFUME')}}</a>
 
         <!-- الروابط -->
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link" href="{{ route('perfume.index') }}">Perfumes</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('sperto.index') }}">Sperto</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('glass.index') }}">Glass</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('company.index') }}">Companies</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('customer.index') }}">Customers</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('order.index') }}">Orders</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ route('perfume.index') }}">@lang('Perfumes')</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('sperto.index') }}">@lang('Sperto')</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('glass.index') }}">@lang('Glass')</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('company.index') }}">@lang('Companies')</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('customer.index') }}">@lang('Customers')</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('order.index') }}">@lang('Orders')</a></li>
             </ul>
 
             <!-- Dropdown لاسم المستخدم -->
@@ -37,12 +41,12 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                         <li>
-                            <a class="dropdown-item" href="{{ route('profile.edit') }}">Profile</a>
+                            <a class="dropdown-item" href="{{ route('profile.edit') }}">{{ __('Profile') }}</a>
                         </li>
                         <li>
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-                                <button class="dropdown-item" type="submit">Logout</button>
+                                <button class="dropdown-item" type="submit">{{ __('Logout') }}</button>
                             </form>
                         </li>
                     </ul>
@@ -54,13 +58,13 @@
 @endauth
 
         @guest
-            <a href="{{ route('login') }}" class="btn btn-primary m-1">Login</a>
-            <a href="{{ route('register') }}" class="btn btn-secondary m-1">Register</a>
+            <a href="{{ route('login') }}" class="btn btn-primary m-1">{{__('Login')}}</a>
+            <a href="{{ route('register') }}" class="btn btn-secondary m-1">{{__('Register')}}</a>
         @endguest
 
         <form class="d-flex justify-content-center mt-3">
-            <input class="form-control w-25 me-2" type="search" placeholder="Search ..." />
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            <input class="form-control w-25 me-2" type="search" placeholder="{{__('Search for Sperto')}}" />
+            <button class="btn btn-outline-success" type="submit">{{__('Search')}}</button>
         </form>
     </nav>
 

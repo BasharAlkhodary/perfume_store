@@ -1,10 +1,14 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{ App::currentLocale() }}" dir="{{ App::currentLocale() == 'ar' ? 'rtl' : 'ltr' }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Perfume | BIK.Perfume</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    @if (App::currentLocale() == 'ar')
+        <link href={{ asset('css/bootstrap.rtl.min.css') }} rel="stylesheet" >
+    @else
+        <link href={{ asset('css/bootstrap.min.css') }} rel="stylesheet" >
+    @endif
 </head>
 
 <body>
@@ -28,13 +32,32 @@
                 <li class="nav-item"><a class="nav-link" href="{{ route('order.index') }}">@lang('Orders')</a></li>
             </ul>
 
-            <!-- Dropdown لاختيار للغة -->
-            <form action="{{ route('lang.switch', app()->getLocale()) }}" method="GET" onchange="this.submit()">
+            {{-- Dropdown لاختيار للغة  --}}
+            <div class="dropdown text-end">
+                <a href="" class="d-block link-dark text-decoration-none dropdown-toggle" id="locale" data-bs-toggle="dropdown" aria-expanded="false">
+                    Language
+                </a>
+                <ul class="dropdown-menu text-small" aria-labelledby="locale">
+                    {{-- <li><a class="dropdown-item" href="{{URL::current() }}?lang=en">English</a></li>
+                    <li><a class="dropdown-item" href="{{URL::current() }}?lang=ar">العربية</a></li> --}}
+
+                    <li><a class="dropdown-item" href="{{ route('set.language', ['lang' => 'en']) }}">English</a></li>
+                    <li><a class="dropdown-item" href="{{ route('set.language', ['lang' => 'ar']) }}">العربية</a></li>
+
+                    {{-- هذا فقط شكلي ولن يؤثر لأنك تعتمد على الـ Session، لكنه يعطيك إحساس بأن الرابط تغير. --}}
+                    {{-- <li><a class="dropdown-item" href="{{ route('set.language', ['lang' => 'en']) }}?redirect={{ urlencode(url()->current()) }}">English</a></li> --}}
+                    {{-- <li><a class="dropdown-item" href="{{ route('set.language', ['lang' => 'ar']) }}?redirect={{ urlencode(url()->current()) }}">العربية</a></li> --}}
+
+
+                </ul>
+            </div>
+
+            {{-- <a href="{{ route('lang.switch', app()->getLocale()) }}" method="GET" onchange="this.submit()"> Language
                 <select name="locale" onchange="window.location.href='{{ url('lang') }}/' + this.value" class="form-select form-select-sm w-auto">
                     <option value="en" {{ app()->getLocale() == 'en' ? 'selected' : '' }}>English</option>
                     <option value="ar" {{ app()->getLocale() == 'ar' ? 'selected' : '' }}>العربية</option>
                 </select>
-</form>
+            </a>      --}}
 
 
             <!-- Dropdown لاسم المستخدم -->
@@ -68,7 +91,7 @@
         @endguest
 
         <form class="d-flex justify-content-center mt-3">
-            <input class="form-control w-25 me-2" type="search" placeholder="{{ __('Searches') }}" />
+            <input class="form-control w-25 me-2" type="search" placeholder="{{ __('Search for Perfume') }}" />
             <button class="btn btn-outline-success" type="submit">{{ __('Search') }}</button>
         </form>
     </nav>
@@ -77,6 +100,7 @@
     <div class="container mt-4">
         @yield('content')  
     </div>
+
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>

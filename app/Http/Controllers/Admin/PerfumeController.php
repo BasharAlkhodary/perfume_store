@@ -25,8 +25,9 @@ public function __construct()
      */
     public function index()
     {
+        // dd(app()->getLocale());
         $perfume = Perfume::latest()->paginate(8);
-        return view('Admin.Perfume.trash', compact('perfume'));
+        return view('Admin.Perfume.index', compact('perfume'));
     }
 
     public function trashedPerfume ()
@@ -82,7 +83,7 @@ public function __construct()
             Perfume::create($input);
         
             // إعادة التوجيه مع رسالة نجاح
-            return redirect()->route('perfume.index')->with('success', 'The perfume was added successfully.');
+            return redirect()->route('perfume.index')->with('success', 'The .{{perfume->name}}. was added successfully.');
         
         
     }

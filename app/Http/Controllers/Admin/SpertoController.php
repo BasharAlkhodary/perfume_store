@@ -22,9 +22,9 @@ class SpertoController extends Controller
 
     public function trashedSperto()
     {
-        // $sperto = Sperto::withTrashed()->latest()->paginate(8);
-        // return view('Admin.sperto.trash', compact('sperto'));
-    echo "fffffffff";
+        $sperto = Sperto::onlyTrashed()->latest()->paginate(8);
+        return view('Admin.sperto.trash', compact('sperto'));
+    // echo "fffffffff";
     }
 
     /**
